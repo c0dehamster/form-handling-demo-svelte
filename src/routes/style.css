@@ -112,6 +112,7 @@ body {
 	padding-inline: 1rem;
 
 	background-color: white;
+	color: var(--color-neutral-800);
 	border: 1px solid var(--color-neutral-200);
 
 	font-size: var(--font-size-500);
