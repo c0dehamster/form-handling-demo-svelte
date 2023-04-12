@@ -8,11 +8,14 @@
 	import Error from "../lib/Error.svelte"
 	import CardFront from "../lib/CardFront.svelte"
 	import CardBack from "../lib/CardBack.svelte"
+	import Complete from "../lib/Complete.svelte"
 
 	import { Validators } from "../lib/Validators"
+	import { values } from "../lib/stores"
 
-	let data = {}
 	let formElement
+	let isComplete = false
+
 	let form = {
 		cardholderName: {
 			validators: [Validators.required],
@@ -32,11 +35,18 @@
 	}
 
 	const onSubmit = e => {
-		if (e?.detail?.data) {
-			console.log(data)
+		if (e?.detail?.valid) {
+			console.log(e.detail.data)
+			isComplete = true
 		} else {
 			console.log("Invalid form")
 		}
+	}
+
+	const reset = () => {
+		isComplete = false
+		formElement.reset()
+		values.set({})
 	}
 </script>
 
@@ -51,35 +61,52 @@
 		</div>
 	</div>
 
-	<Form {form} on:submit={onSubmit}>
-		<div class="inputs">
-			<div class="input-wrapper input-wrapper--span-two">
-				<Input name="cardholderName" label="cardholder name" placeholder="e.g. Jane Appleseed" />
-				<Error fieldNames="cardholderName" />
-			</div>
-
-			<div class="input-wrapper input-wrapper--span-two">
-				<Input name="cardNumber" label="card number" placeholder="e.g. 1234 5678 9123 0000" />
-				<Error fieldNames="cardNumber" />
-			</div>
-
-			<fieldset class="input-wrapper">
-				<legend class="label">Exp. date (mm/yyy)</legend>
-				<div class="date-wrapper">
-					<Input name="month" placeholder="MM" maxlength="2" />
-					<Input name="year" placeholder="YY" maxlength="2" />
+	<Form {form} on:submit={onSubmit} bind:this={formElement}>
+		{#if !isComplete}
+			<div class="inputs">
+				<div class="input-wrapper input-wrapper--span-two">
+					<Input
+						name="cardholderName"
+						label="cardholder name"
+						placeholder="e.g. Jane Appleseed" />
+					<Error fieldNames="cardholderName" />
 				</div>
 
-				<Error fieldNames={["month", "year"]} />
-			</fieldset>
+				<div class="input-wrapper input-wrapper--span-two">
+					<Input
+						name="cardNumber"
+						label="card number"
+						placeholder="e.g. 1234 5678 9123 0000" />
+					<Error fieldNames="cardNumber" />
+				</div>
 
-			<div class="input-wrapper">
-				<Input name="cvc" label="cvc" placeholder="e.g. 123" maxlength="3" />
-				<Error fieldNames="cvc" />
+				<fieldset class="input-wrapper">
+					<legend class="label">Exp. date (mm/yyy)</legend>
+					<div class="date-wrapper">
+						<Input name="month" placeholder="MM" maxlength="2" />
+						<Input name="year" placeholder="YY" maxlength="2" />
+					</div>
+
+					<Error fieldNames={["month", "year"]} />
+				</fieldset>
+
+				<div class="input-wrapper">
+					<Input
+						name="cvc"
+						label="cvc"
+						placeholder="e.g. 123"
+						maxlength="3" />
+					<Error fieldNames="cvc" />
+				</div>
 			</div>
-		</div>
 
-		<button class="button button--submit" type="submit">Confirm</button>
+			<button class="button button--submit" type="submit">Confirm</button>
+		{:else}
+			<Complete>
+				<button class="button" type="reset" on:click={reset}
+					>Continue</button>
+			</Complete>
+		{/if}
 	</Form>
 </main>
 

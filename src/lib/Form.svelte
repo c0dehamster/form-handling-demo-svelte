@@ -12,7 +12,9 @@
 	const dispatch = createEventDispatcher()
 
 	const isFormValid = () => {
-		return !Object.values($errors).some(field => Object.values(field).some(errorObject => errorObject.error))
+		return !Object.values($errors).some(field =>
+			Object.values(field).some(errorObject => errorObject.error)
+		)
 	}
 
 	const validateField = (field, value) => {
@@ -51,7 +53,6 @@
 		}
 
 		validateForm(data, sharedValidationFn)
-		console.log($errors)
 
 		return dispatch("submit", { valid: isFormValid(), data })
 	}
@@ -61,7 +62,7 @@
 	setContext("form", { errors, onBlur })
 </script>
 
-<form on:submit={onSubmit} bind:this={formElement}>
+<form on:submit|preventDefault={onSubmit} bind:this={formElement}>
 	<slot />
 </form>
 
