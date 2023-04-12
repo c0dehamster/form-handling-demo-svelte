@@ -68,7 +68,11 @@ select {
 /* General styling */
 
 :root {
-	--color-primary-gradient: linear-gradient(to right bottom, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+	--color-primary-gradient: linear-gradient(
+		to right bottom,
+		hsl(249, 99%, 64%),
+		hsl(278, 94%, 30%)
+	);
 
 	--color-neutral-100: white;
 	--color-neutral-200: hsl(270, 3%, 87%);

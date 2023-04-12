@@ -81,7 +81,7 @@
 				</div>
 
 				<fieldset class="input-wrapper">
-					<legend class="label">Exp. date (mm/yyy)</legend>
+					<legend class="label">Exp. date (mm/yy)</legend>
 					<div class="date-wrapper">
 						<Input name="month" placeholder="MM" maxlength="2" />
 						<Input name="year" placeholder="YY" maxlength="2" />
@@ -166,8 +166,13 @@
 	}
 
 	.inputs {
-		row-gap: 1.25rem;
+		row-gap: 0.75rem;
 		column-gap: 0.75rem;
+	}
+
+	.input-wrapper {
+		display: grid;
+		row-gap: 0.5rem;
 	}
 
 	.date-wrapper {
@@ -182,7 +187,7 @@
 	}
 
 	legend {
-		padding-block: 3px; /* To make it visually match the labels */
+		padding-block-end: 0.5rem; /* To make it visually match the labels */
 	}
 
 	.input-wrapper--span-two {
@@ -221,6 +226,11 @@
 
 		.card-back {
 			right: 1rem;
+		}
+
+		.inputs {
+			row-gap: 1rem;
+			column-gap: 1.5rem;
 		}
 	}
 </style>
