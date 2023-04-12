@@ -1,14 +1,9 @@
 <script>
 	import { values } from "./stores"
+	import { replaceGradually } from "./utils"
 
 	export let cardLogo = ""
 	export let cardFrontSide = ""
-
-	const replaceGradually = (value, placeholder) => {
-		if (!value) return placeholder
-
-		return `${placeholder.slice(value.length)}${value}`
-	}
 
 	$: expiry = `${replaceGradually($values.month, "00")}/${replaceGradually(
 		$values.year,

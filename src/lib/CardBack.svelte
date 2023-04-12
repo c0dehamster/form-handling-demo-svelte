@@ -1,12 +1,13 @@
 <script>
 	import { values } from "./stores"
+	import { replaceGradually } from "./utils"
 
 	export let cardBackSide = ""
 </script>
 
 <div class="card-back__contents" style="background-image: url({cardBackSide});">
 	<p class="card-back__cvc">
-		<span class="cvc">{$values.cvc ? $values.cvc : "000"}</span>
+		<span class="cvc">{replaceGradually($values.cvc, "000")}</span>
 	</p>
 </div>
 
