@@ -11,15 +11,16 @@
 		return `${placeholder.slice(value.length)}${value}`
 	}
 
+	$: cardNumber = $values.cardNumber
+		? $values.cardNumber.replaceAll(/[^0-9]/g, "")
+		: ""
+
 	$: expiry = `${replaceGradually($values.month, "00")}/${replaceGradually(
 		$values.year,
 		"00"
 	)}`
 
-	$: cardNumberFormatted = replaceGradually(
-		$values.cardNumber,
-		"0000000000000000"
-	)
+	$: cardNumberFormatted = replaceGradually(cardNumber, "0000000000000000")
 </script>
 
 <div class="card-front">

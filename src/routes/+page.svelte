@@ -33,6 +33,16 @@
 		},
 	}
 
+	// It would have been much easier to just prevent non-numerical inputs
+
+	const maxNumberLength = e => {
+		let numberFormatted = e.target.value.replaceAll(/[^0-9]/g, "")
+
+		if (numberFormatted.length > 16) {
+			e.target.value = e.target.value.slice(0, -1)
+		}
+	}
+
 	const onSubmit = e => {
 		if (e?.detail?.valid) {
 			console.log(e.detail.data)
@@ -69,7 +79,8 @@
 					<Input
 						name="cardNumber"
 						label="card number"
-						placeholder="e.g. 1234 5678 9123 0000" />
+						placeholder="e.g. 1234 5678 9123 0000"
+						onInput={maxNumberLength} />
 					<Error fieldNames="cardNumber" />
 				</div>
 

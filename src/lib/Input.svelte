@@ -7,6 +7,7 @@
 	export let autocomplete = "off"
 	export let maxlength = ""
 	export let placeholder = ""
+	export let onInput = () => {}
 
 	const { errors, onBlur } = getContext("form")
 
@@ -35,6 +36,7 @@
 	{maxlength}
 	on:blur={onBlur}
 	{placeholder}
+	on:input={onInput}
 	bind:value={$values[name]} />
 
 <style>
