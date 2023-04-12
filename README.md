@@ -57,9 +57,9 @@ Working on this project, I continued learning form handling in Svelte. I was
 able to re-use a lot of code from my previous Frontend mentor challenge but
 there were a few new topics for me as well.
 
-The card preview was definitely the most challenging part of the project. I used
-new container units to make it resize without changing relative dimensions. Not
-sure if it was necessary. Later I found
+The card preview was definitely the most challenging part of the project. I
+decided to use it as an opportunity to test new container units. Not sure if it
+was necessary. Later I found
 [a tutorial on Kevin Powell's channel](https://youtu.be/H04P5YXVssE) where he
 used this exact challenge to demonstrate a responsive layout built using
 position: absolute. I recommend to check it out to see a simpler approach to the
