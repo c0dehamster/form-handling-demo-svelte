@@ -9,9 +9,9 @@
 	}`
 
 	$: cardNumber = $values.cardNumber ?? ""
-	$: cardNumberFormatted = `${cardNumber}${"0000000000000000".slice(
+	$: cardNumberFormatted = `${"0000000000000000".slice(
 		cardNumber.length
-	)}`
+	)}${cardNumber}`
 </script>
 
 <div
