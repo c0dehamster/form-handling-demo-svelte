@@ -30,7 +30,7 @@
 
 		<div class="card-front__details">
 			<p class="card-front__number">
-				<!-- Unfortunately, Montserrat is not a monospace fonr-->
+				<!-- Unfortunately, Montserrat is not a monospace font-->
 				<span class="four-digit-slice"
 					>{cardNumberFormatted.slice(0, 4)}</span>
 				<span class="four-digit-slice"
@@ -70,6 +70,8 @@
 		container-type: inline-size;
 		width: min(76cqw, 28rem);
 
+		border-radius: 0.5rem;
+
 		position: absolute;
 
 		color: var(--color-neutral-200);
@@ -81,6 +83,23 @@
 		left: 4.27cqw;
 		top: 33.6cqw;
 		z-index: 1;
+	}
+
+	/* Not sure how to get the shadows right */
+
+	.card-front::before {
+		content: "";
+		position: absolute;
+		height: 3rem;
+		z-index: -1;
+
+		border-radius: 0.5rem;
+
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		box-shadow: 1rem 1rem 4.5rem var(--color-neutral-400);
 	}
 
 	.card-back {
@@ -170,6 +189,25 @@
 
 		.card-back {
 			right: 1rem;
+		}
+
+		.card-front::before {
+			left: 50%;
+		}
+
+		.card-back::before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+
+			border-radius: 0.5rem;
+
+			left: 50%;
+			top: 50%;
+			right: 0;
+			bottom: 0;
+
+			box-shadow: 0 0 6rem var(--color-neutral-400);
 		}
 	}
 </style>

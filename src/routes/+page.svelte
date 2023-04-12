@@ -115,8 +115,6 @@
 		background-size: contain;
 	}
 
-	/* A whole bunch of magical numbers that are supposed to make this look like a credit card */
-
 	.preview {
 		container: card-display / inline-size;
 
