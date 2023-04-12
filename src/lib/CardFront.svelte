@@ -4,14 +4,21 @@
 	export let cardLogo = ""
 	export let cardFrontSide = ""
 
-	let expiry = `${$values.month ? $values.month : "00"}/${
-		$values.year ? $values.year : "00"
-	}`
+	const replaceGradually = (value, placeholder) => {
+		if (!value) return placeholder
 
-	$: cardNumber = $values.cardNumber ?? ""
-	$: cardNumberFormatted = `${"0000000000000000".slice(
-		cardNumber.length
-	)}${cardNumber}`
+		return `${placeholder.slice(value.length)}${value}`
+	}
+
+	$: expiry = `${replaceGradually($values.month, "00")}/${replaceGradually(
+		$values.year,
+		"00"
+	)}`
+
+	$: cardNumberFormatted = replaceGradually(
+		$values.cardNumber,
+		"0000000000000000"
+	)
 </script>
 
 <div
