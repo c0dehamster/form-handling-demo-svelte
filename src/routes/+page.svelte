@@ -6,8 +6,7 @@
 	import Form from "../lib/Form.svelte"
 	import Input from "../lib/Input.svelte"
 	import Error from "../lib/Error.svelte"
-	import CardFront from "../lib/CardFront.svelte"
-	import CardBack from "../lib/CardBack.svelte"
+	import CardPreview from "../lib/CardPreview.svelte"
 	import Complete from "../lib/Complete.svelte"
 
 	import { Validators } from "../lib/Validators"
@@ -52,13 +51,7 @@
 
 <main class="wrapper">
 	<div class="preview">
-		<div class="card-front">
-			<CardFront {cardLogo} {cardFrontSide} />
-		</div>
-
-		<div class="card-back">
-			<CardBack {cardBackSide} />
-		</div>
+		<CardPreview {cardLogo} {cardFrontSide} {cardBackSide} />
 	</div>
 
 	<Form {form} on:submit={onSubmit} bind:this={formElement}>
@@ -132,31 +125,6 @@
 		width: 100%;
 	}
 
-	.card-front,
-	.card-back {
-		aspect-ratio: 1.82;
-		container-type: inline-size;
-		width: min(76cqw, 28rem);
-
-		position: absolute;
-
-		color: var(--color-neutral-200);
-	}
-
-	.card-front {
-		container-name: card-front;
-
-		left: 4.27cqw;
-		top: 33.6cqw;
-		z-index: 1;
-	}
-
-	.card-back {
-		container-name: card-back;
-		top: 8.53cqw;
-		right: 4.27cqw;
-	}
-
 	/* Form elements */
 
 	.inputs,
@@ -210,22 +178,6 @@
 			justify-content: center;
 			gap: 2.25rem;
 			align-items: end;
-		}
-
-		.card-back,
-		.card-front {
-			position: relative;
-			inset: auto;
-
-			width: min(62.2cqw, 28rem);
-		}
-
-		.card-front {
-			right: 6.75rem;
-		}
-
-		.card-back {
-			right: 1rem;
 		}
 
 		.inputs {
