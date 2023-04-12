@@ -210,4 +210,43 @@
 			box-shadow: 0 0 6rem var(--color-neutral-400);
 		}
 	}
+
+	/* Fallback for Frontend Mentor's screenshot generator */
+
+	@media (min-width: 90rem) {
+		.card-front,
+		.card-back {
+			width: 28rem;
+		}
+
+		.card-front__contents {
+			padding: 1.5rem 2rem;
+		}
+
+		.card-front__logo {
+			width: 5.25rem;
+		}
+
+		.card-front__details {
+			row-gap: 1.5rem;
+		}
+
+		.card-front__number {
+			font-size: var(--font-size-900);
+		}
+
+		.card-front__expiry,
+		.card-front__name {
+			font-size: var(--font-size-400);
+		}
+
+		.card-back__contents {
+			padding-block-start: 6.25rem;
+			padding-inline-end: 2.5rem;
+		}
+
+		.card-back__cvc {
+			font-size: var(--color-neutral-400);
+		}
+	}
 </style>
