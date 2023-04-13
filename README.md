@@ -53,8 +53,8 @@ Users should be able to:
 
 ### What I learned
 
-Working on this project, I continued learning form handling in Svelte. I was
-able to re-use a lot of code from my previous Frontend mentor challenge but
+Working on this project, I continued learning about form handling in Svelte. I
+was able to re-use a lot of code from my previous Frontend mentor challenge but
 there were a few new topics for me as well.
 
 The card preview was definitely the most challenging part of the project. I
@@ -67,7 +67,7 @@ problem.
 
 I used Svelte stores to make the card display update on input. Stores allow to
 declare a variable that can be accessed by any component of the application, and
-the component will be re-rendered every time the wariable changes. I find it a
+the component will be re-rendered every time the variable changes. I find it a
 very useful feature that eliminates a lot of complexity required to achieve
 interactivity.
 
